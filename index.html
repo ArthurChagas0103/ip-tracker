@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>IP Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div>
+          <h1>IP Tracker</h1>
+          <p class="lead">
+            Detecta IP, consulta geolocalização e mostra informações no mapa
+            (usa serviços públicos).
+          </p>
+        </div>
+      </header>
+
+      <div class="card card-consult">
+        <div class="controls">
+          <div style="flex: 1">
+            <input
+              id="ipInput"
+              type="text"
+              placeholder="Deixe vazio para usar seu IP público — ou cole um IP aqui (ex: 8.8.8.8)"
+            />
+          </div>
+          <button id="btnLookup">Consultar</button>
+          <button id="btnMyIp" class="ghost">Meu IP agora</button>
+        </div>
+        <div class="small" style="margin-top: 8px">
+          Serviço de IP público usado: <strong>api.ipify.org</strong>. Serviço
+          de geolocalização: <strong>ipwho.is</strong>.
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3 style="margin-top: 0; margin-bottom: 8px">Informações</h3>
+          <table id="infoTable">
+            <tbody>
+              <tr>
+                <td class="k">IP</td>
+                <td id="ip">—</td>
+              </tr>
+              <tr>
+                <td class="k">País / Região</td>
+                <td id="country">—</td>
+              </tr>
+              <tr>
+                <td class="k">Cidade</td>
+                <td id="city">—</td>
+              </tr>
+              <tr>
+                <td class="k">Latitude / Longitude</td>
+                <td id="latlon">—</td>
+              </tr>
+              <tr>
+                <td class="k">Organização / ASN</td>
+                <td id="org">—</td>
+              </tr>
+              <tr>
+                <td class="k">ISP</td>
+                <td id="isp">—</td>
+              </tr>
+              <tr>
+                <td class="k">Timezone</td>
+                <td id="tz">—</td>
+              </tr>
+              <tr>
+                <td class="k">Conexão</td>
+                <td id="connection">—</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="actions">
+            <button id="btnCopyJson" class="ghost">Copiar JSON</button>
+            <button id="btnDownloadJson" class="ghost">Baixar JSON</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top: 0; margin-bottom: 8px">Mapa</h3>
+          <div id="map">Carregando mapa...</div>
+          <div style="margin-top: 8px" class="small">
+            Fonte do mapa: OpenStreetMap (via Leaflet).
+          </div>
+        </div>
+
+        <div style="grid-column: 1 / -1" class="card">
+          <h3 style="margin-top: 0; margin-bottom: 8px">
+            JSON da consulta
+          </h3>
+          <pre id="rawJson" class="json">—</pre>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
